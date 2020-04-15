@@ -1,10 +1,146 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>TS Schedules</title>
+    <style>
+      body{
+        font-family:sans-serif;
+        font-size:10px;
+        opacity:.75;
+      }
+      .calendar{
+        display:flex;
+      }
+      .col{
+        flex: 1;
+      }
+      .time-block{
+        background: #F7EFAF;
+        height:20px;
+        width:100px;
+      }
+      .legend .time-block{
+        width:50px;
+        background: #fff;
+      }
+      .mm #block-4, .mm #block-6{
+        background: #F6BBCD;
+      }
+      .ad #block-2, .mm #block-16{
+        background: #F6BBCD;
+      }
+    </style>
   </head>
   <body>
-    schedule!
+
+    <div class="calendar">
+      <div class="col flex-1 legend">
+        <div class="time-block" id="block-1">1am</div>
+        <div class="time-block" id="block-2">2am</div>
+        <div class="time-block" id="block-3">3am</div>
+        <div class="time-block" id="block-4">4am</div>
+        <div class="time-block" id="block-5">5am</div>
+        <div class="time-block" id="block-6">6am</div>
+        <div class="time-block" id="block-7">7am</div>
+        <div class="time-block" id="block-8">8am</div>
+        <div class="time-block" id="block-9">9am</div>
+        <div class="time-block" id="block-10">10am</div>
+        <div class="time-block" id="block-11">11am</div>
+        <div class="time-block" id="block-12">12am</div>
+        <div class="time-block" id="block-13">1pm</div>
+        <div class="time-block" id="block-14">2pm</div>
+        <div class="time-block" id="block-15">3pm</div>
+        <div class="time-block" id="block-16">4pm</div>
+        <div class="time-block" id="block-17">5pm</div>
+        <div class="time-block" id="block-18">6pm</div>
+        <div class="time-block" id="block-19">7pm</div>
+        <div class="time-block" id="block-20">8pm</div>
+        <div class="time-block" id="block-21">9pm</div>
+        <div class="time-block" id="block-22">10pm</div>
+        <div class="time-block" id="block-23">11pm</div>
+        <div class="time-block" id="block-24">12pm</div>
+      </div>
+      <div class="col flex-1 mm">
+        <div class="time-block" id="block-1"></div>
+        <div class="time-block" id="block-2"></div>
+        <div class="time-block" id="block-3"></div>
+        <div class="time-block" id="block-4"></div>
+        <div class="time-block" id="block-5"></div>
+        <div class="time-block" id="block-6"></div>
+        <div class="time-block" id="block-7"></div>
+        <div class="time-block" id="block-8"></div>
+        <div class="time-block" id="block-9"></div>
+        <div class="time-block" id="block-10"></div>
+        <div class="time-block" id="block-11"></div>
+        <div class="time-block" id="block-12"></div>
+        <div class="time-block" id="block-13"></div>
+        <div class="time-block" id="block-14"></div>
+        <div class="time-block" id="block-15"></div>
+        <div class="time-block" id="block-16"></div>
+        <div class="time-block" id="block-17"></div>
+        <div class="time-block" id="block-18"></div>
+        <div class="time-block" id="block-19"></div>
+        <div class="time-block" id="block-20"></div>
+        <div class="time-block" id="block-21"></div>
+        <div class="time-block" id="block-22"></div>
+        <div class="time-block" id="block-23"></div>
+        <div class="time-block" id="block-24"></div>
+      </div>
+      <div class="col flex-1 ad">
+        <div class="time-block" id="block-1"></div>
+        <div class="time-block" id="block-2"></div>
+        <div class="time-block" id="block-3"></div>
+        <div class="time-block" id="block-4"></div>
+        <div class="time-block" id="block-5"></div>
+        <div class="time-block" id="block-6"></div>
+        <div class="time-block" id="block-7"></div>
+        <div class="time-block" id="block-8"></div>
+        <div class="time-block" id="block-9"></div>
+        <div class="time-block" id="block-10"></div>
+        <div class="time-block" id="block-11"></div>
+        <div class="time-block" id="block-12"></div>
+        <div class="time-block" id="block-13"></div>
+        <div class="time-block" id="block-14"></div>
+        <div class="time-block" id="block-15"></div>
+        <div class="time-block" id="block-16"></div>
+        <div class="time-block" id="block-17"></div>
+        <div class="time-block" id="block-18"></div>
+        <div class="time-block" id="block-19"></div>
+        <div class="time-block" id="block-20"></div>
+        <div class="time-block" id="block-21"></div>
+        <div class="time-block" id="block-22"></div>
+        <div class="time-block" id="block-23"></div>
+        <div class="time-block" id="block-24"></div>
+      </div>
+      <div class="col flex-1 co">
+        <div class="time-block" id="block-1"></div>
+        <div class="time-block" id="block-2"></div>
+        <div class="time-block" id="block-3"></div>
+        <div class="time-block" id="block-4"></div>
+        <div class="time-block" id="block-5"></div>
+        <div class="time-block" id="block-6"></div>
+        <div class="time-block" id="block-7"></div>
+        <div class="time-block" id="block-8"></div>
+        <div class="time-block" id="block-9"></div>
+        <div class="time-block" id="block-10"></div>
+        <div class="time-block" id="block-11"></div>
+        <div class="time-block" id="block-12"></div>
+        <div class="time-block" id="block-13"></div>
+        <div class="time-block" id="block-14"></div>
+        <div class="time-block" id="block-15"></div>
+        <div class="time-block" id="block-16"></div>
+        <div class="time-block" id="block-17"></div>
+        <div class="time-block" id="block-18"></div>
+        <div class="time-block" id="block-19"></div>
+        <div class="time-block" id="block-20"></div>
+        <div class="time-block" id="block-21"></div>
+        <div class="time-block" id="block-22"></div>
+        <div class="time-block" id="block-23"></div>
+        <div class="time-block" id="block-24"></div>
+      </div>
+
+    </div>
+
   </body>
 </html>

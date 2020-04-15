@@ -113,7 +113,7 @@ controller.hears(
       let text = message.text;
       // let user = message.user;
       // let type = message.type;
-        bot.reply(message,'Hello! Here\'s everyones schedule today: \n' + 'http://blog.township.agency/uploads/1_01a1Lg2WkMZRcRrX_COsRw.png');
+        bot.reply(message,'Hello! Here\'s everyones schedule today: \n' + 'https://mattmotel.github.io/schedulebot/');
     }
 );
 
