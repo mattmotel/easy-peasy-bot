@@ -82,16 +82,16 @@ controller.on('rtm_close', function (bot) {
 // BEGIN EDITING HERE!
 
 controller.on('bot_channel_join', function (bot, message) {
-    bot.reply(message, "I'm here1!")
+    bot.reply(message, "Schedule bot is here!")
 });
 
-controller.hears('hello', 'direct_message', function (bot, message) {
-    bot.reply(message, 'Hello!');
-});
-
-controller.hears('hi', function (bot, message) {
-    bot.reply(message, 'Hello Matt!');
-});
+// controller.hears('hello', 'direct_message', function (bot, message) {
+//     bot.reply(message, 'Hello!');
+// });
+//
+// controller.hears('hi', function (bot, message) {
+//     bot.reply(message, 'Hello Matt!');
+// });
 
 controller.hears(
     ['I am working', 'I\'m working'],
@@ -113,7 +113,9 @@ controller.hears(
       let text = message.text;
       // let user = message.user;
       // let type = message.type;
-        bot.reply(message,'Hello! Here\'s everyones schedule today: \n' + 'https://mattmotel.github.io/schedulebot/');
+        bot.reply(message,'Hello! Here\'s everyones schedule today: \n'
+        + 'https://mattmotel.github.io/schedulebot/'+'\n'
+         + 'http://image.thum.io/get/ogImage/https://mattmotel.github.io/schedulebot/');
     }
 );
 
