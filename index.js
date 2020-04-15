@@ -82,12 +82,42 @@ controller.on('rtm_close', function (bot) {
 // BEGIN EDITING HERE!
 
 controller.on('bot_channel_join', function (bot, message) {
-    bot.reply(message, "I'm here!")
+    bot.reply(message, "I'm here1!")
 });
 
 controller.hears('hello', 'direct_message', function (bot, message) {
     bot.reply(message, 'Hello!');
 });
+
+controller.hears('hi', function (bot, message) {
+    bot.reply(message, 'Hello Matt!');
+});
+
+controller.hears(
+    ['I am working', 'I\'m working'],
+    ['direct_mention', 'mention', 'direct_message', 'ambient'],
+    function(bot,message) {
+        let text = message.text;
+        text = text.replace("I am", "You are");
+        text = text.replace("I\'m", "You are");
+
+        bot.reply(message, '' + text + ' \n Great! I\'ll record that');
+    }
+);
+
+controller.hears(
+    ['the schedule', 'working?'  , 'schedule?'],
+    ['direct_mention', 'mention', 'direct_message', 'ambient'],
+    function(bot,message) {
+      let reference = message.reference;
+      let text = message.text;
+      // let user = message.user;
+      // let type = message.type;
+        bot.reply(message,'Hello! Here\'s everyones schedule today: \n' + 'http://blog.township.agency/uploads/1_01a1Lg2WkMZRcRrX_COsRw.png');
+    }
+);
+
+
 
 
 /**
