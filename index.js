@@ -111,11 +111,11 @@ controller.hears(
     function(bot,message) {
       let reference = message.reference;
       let text = message.text;
+      let random = Math.floor(Math.random() * 1000000000);
       // let user = message.user;
       // let type = message.type;
         bot.reply(message,'Hello! Here\'s everyones schedule today: \n'
-        + 'https://mattmotel.github.io/schedulebot/'+'\n'
-        + 'https://api.microlink.io?url=https%3A%2F%2Fmattmotel.github.io%2Fschedulebot%2F&screenshot=true&meta=false&embed=screenshot.url&force');
+        + 'https://api.microlink.io?url=https%3A%2F%2Fmattmotel.github.io%2Fschedulebot%2F&screenshot=true&meta=false&embed=screenshot.url&force&random=' + random);
     }
 );
 
