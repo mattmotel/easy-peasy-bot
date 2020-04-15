@@ -115,7 +115,7 @@ controller.hears(
       // let type = message.type;
         bot.reply(message,'Hello! Here\'s everyones schedule today: \n'
         + 'https://mattmotel.github.io/schedulebot/'+'\n'
-        + 'https://microlink.io/screenshot?url=https%3A%2F%2Fmattmotel.github.io%2Fschedulebot%2F');
+        + 'https://api.microlink.io?url=https%3A%2F%2Fmattmotel.github.io%2Fschedulebot%2F&screenshot=true&meta=false&embed=screenshot.url&force');
     }
 );
 
