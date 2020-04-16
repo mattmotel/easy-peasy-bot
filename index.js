@@ -27,16 +27,12 @@ function onInstallation(bot, installer) {
  */
 
 var config = {};
-if (process.env.MONGOLAB_URI) {
-    var BotkitStorage = require('botkit-storage-mongo');
-    config = {
-        storage: BotkitStorage({mongoUri: process.env.MONGOLAB_URI}),
-    };
-} else {
-    config = {
-        json_file_store: ((process.env.TOKEN)?'./db_slack_bot_ci/':'./db_slack_bot_a/'), //use a different name if an app or CI
-    };
-}
+// var Botkit = require('botkit'),
+//     firebaseStorage = require('botkit-storage-firebase')({databaseURL: 'https://schedulebot-86f4a.firebaseio.com/'}),
+//     controller = Botkit.slackbot({
+//         storage: firebaseStorage
+//     });
+
 
 /**
  * Are being run as an app or a custom integration? The initialization will differ, depending
@@ -85,19 +81,89 @@ controller.on('bot_channel_join', function (bot, message) {
     bot.reply(message, "Schedule bot is here!")
 });
 
-// controller.hears('hello', 'direct_message', function (bot, message) {
-//     bot.reply(message, 'Hello!');
-// });
-//
-// controller.hears('hi', function (bot, message) {
-//     bot.reply(message, 'Hello Matt!');
-// });
+
+const airtable = require("airtable");
+
+airtable.configure({
+endpointUrl: "https://api.airtable.com",
+apiKey: "keyeMEsu44B5rmyXQ"
+});
+
+const base = airtable.base("appbOCUXyYyVplanV");
+
+controller.hears(
+    ['Show me everything', 'airtable'],
+    ['direct_mention', 'mention', 'direct_message', 'ambient'],
+    function(bot,message) {
+        let text = message.text;
+        let reference = message.reference;
+        let user = message.user;
+
+        base("Table 1").select({
+          view: 'Yes'
+        }).firstPage((err, records) => {
+            var airtableRecords = JSON.stringify(records);
+            bot.reply(message, ' You ask for it. \n \n \n' + airtableRecords + ' ');
+          if (err) {
+            console.error(err);
+            return;
+          }
+
+        });
+
+
+    }
+);
+
+controller.hears(
+    ['records?', 'show records'],
+    ['direct_mention', 'mention', 'direct_message', 'ambient'],
+    function(bot,message) {
+
+        base("Table 1").select({
+          view: 'Yes'
+        }).firstPage((err, records) => {
+
+          let rec = Object.values(records);
+
+            bot.reply('' + rec  + '\n \n \n hey' );
+          if (err) {
+            console.error(err);
+            return;
+          }
+
+        });
+
+
+    }
+);
+
+
+
+
 
 controller.hears(
     ['I am working', 'I\'m working'],
     ['direct_mention', 'mention', 'direct_message', 'ambient'],
     function(bot,message) {
         let text = message.text;
+        let reference = message.reference;
+        let user = message.user;
+
+
+
+
+        base(user).create({ User: user, Notes: text }, function(
+        err,
+        record
+        ) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(record.getId());
+        });
+
         text = text.replace("I am", "You are");
         text = text.replace("I\'m", "You are");
 
@@ -105,20 +171,26 @@ controller.hears(
     }
 );
 
+
+
 controller.hears(
     ['the schedule', 'working?'  , 'schedule?'],
     ['direct_mention', 'mention', 'direct_message', 'ambient'],
     function(bot,message) {
       let reference = message.reference;
+      let user = message.user;
       let text = message.text;
       let random = Math.floor(Math.random() * 1000000000);
       // let user = message.user;
-      // let type = message.type;
+      // let type = message.type;  var beans = {id: 'cool', beans: ['pinto', 'garbanzo']};
+        // controller.storage.save(text);
+
+
+
         bot.reply(message,'Hello! Here\'s everyones schedule today: \n'
         + 'https://api.microlink.io?url=https%3A%2F%2Fmattmotel.github.io%2Fschedulebot%2F&screenshot=true&meta=false&embed=screenshot.url&force&random=' + random);
     }
 );
-
 
 
 
